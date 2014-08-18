@@ -31,3 +31,8 @@
 
 ; Load Theme
 (load-theme 'cyberpunk t)
+
+
+; Clojure
+;; require or autoload paredit-mode
+(add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
