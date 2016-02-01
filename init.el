@@ -4,15 +4,25 @@
 (load-library "better-defaults")
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 
 ; Packages
 (defvar my-packages '(cyberpunk-theme 
                       clojure-mode 
                       cider
                       paredit
-                      rainbow-delimiters)
+                      rainbow-delimiters
+                      nginx-mode
+                      company
+                      company-racer
+                      racer
+                      flycheck
+                      flycheck-rust
+                      rust-mode)
   "A list of packages to ensure are installed at launch.")
 
 ; Set CUA Mode
