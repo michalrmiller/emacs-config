@@ -18,6 +18,14 @@
 ; Set CUA Mode
 (cua-mode t)
 
+; Line numbers
+(global-linum-mode t)
+
+; Setup tabs
+(setq tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
+
 ; Init packages
 (package-initialize)
 
@@ -32,7 +40,6 @@
 
 ; Load Theme
 (load-theme 'cyberpunk t)
-
 
 ; Clojure
 ;; require or autoload paredit-mode
