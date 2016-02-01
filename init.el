@@ -10,6 +10,7 @@
 ; Packages
 (defvar my-packages '(cyberpunk-theme 
                       clojure-mode 
+                      cider
                       paredit
                       rainbow-delimiters)
   "A list of packages to ensure are installed at launch.")
@@ -36,3 +37,13 @@
 ; Clojure
 ;; require or autoload paredit-mode
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
+
+; CIDER
+;; Enable eldoc
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+;; Hide special buffers
+(setq nrepl-hide-special-buffers t)
+;; Enable pairedit
+(add-hook 'cider-repl-mode-hook 'paredit-mode)
+;; Enable rainbow parens
+(add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
