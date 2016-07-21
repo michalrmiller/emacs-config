@@ -5,10 +5,14 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
+; Init packages
+(package-initialize)
 
 ; Packages
 (defvar my-packages '(cyberpunk-theme 
@@ -22,7 +26,9 @@
                       racer
                       flycheck
                       flycheck-rust
-                      rust-mode)
+                      rust-mode
+                      org
+                      go-mode)
   "A list of packages to ensure are installed at launch.")
 
 ; Set CUA Mode
@@ -35,9 +41,12 @@
 (setq tab-width 4)
 (defvaralias 'c-basic-offset 'tab-width)
 (defvaralias 'cperl-indent-level 'tab-width)
-
-; Init packages
-(package-initialize)
+(add-hook 'go-mode-hook 
+          (lambda ()
+            (setq-default) 
+            (setq tab-width 4) 
+            (setq standard-indent 4) 
+            (setq indent-tabs-mode nil)))
 
 ; Refresh if needed
 (when (not package-archive-contents)
