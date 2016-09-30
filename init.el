@@ -15,7 +15,10 @@
 (package-initialize)
 
 ; Packages
-(defvar my-packages '(cyberpunk-theme 
+(defvar my-packages '(cyberpunk-theme
+                      solarized-theme
+                      smart-mode-line
+                      smart-mode-line-powerline-theme
                       clojure-mode 
                       cider
                       paredit
@@ -59,6 +62,15 @@
 
 ; Load Theme
 (load-theme 'cyberpunk t)
+;(load-theme 'solarized-dark t)
+
+; Load Smart Line Mode
+(setq sml/no-confirm-load-theme t)
+(setq sml/theme 'powerline)
+(sml/setup)
+
+;; no startup msg  
+(setq inhibit-startup-message t)
 
 ; Clojure
 ;; require or autoload paredit-mode
