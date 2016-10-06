@@ -31,7 +31,8 @@
                       flycheck-rust
                       rust-mode
                       org
-                      go-mode)
+                      go-mode
+                      es-mode)
   "A list of packages to ensure are installed at launch.")
 
 ; Set CUA Mode
