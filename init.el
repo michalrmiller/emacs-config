@@ -32,7 +32,8 @@
                       rust-mode
                       org
                       go-mode
-                      es-mode)
+                      es-mode
+                      elixir-mode)
   "A list of packages to ensure are installed at launch.")
 
 ; Set CUA Mode
