@@ -5,11 +5,10 @@
 
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
 
 ; Init packages
 (package-initialize)
@@ -33,7 +32,12 @@
                       org
                       go-mode
                       es-mode
-                      elixir-mode)
+                      elixir-mode
+                      eyebrowse
+                      yaml-mode
+                      indent-tools
+                      elpy
+                      )
   "A list of packages to ensure are installed at launch.")
 
 ; Set CUA Mode
@@ -74,6 +78,9 @@
 ;; no startup msg  
 (setq inhibit-startup-message t)
 
+;; EyeBrowse
+(eyebrowse-mode t)
+
 ; Clojure
 ;; require or autoload paredit-mode
 (add-hook 'clojure-mode-hook (lambda () (paredit-mode 1)))
@@ -87,3 +94,14 @@
 (add-hook 'cider-repl-mode-hook 'paredit-mode)
 ;; Enable rainbow parens
 (add-hook 'cider-repl-mode-hook 'rainbow-delimiters-mode)
+
+;; YAML
+;;(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
+;; Python
+;; Requires: pip install jedi flake8 autopep8
+(elpy-enable)
